@@ -1,0 +1,19 @@
+{
+  "name": "noah",
+  "version": "0.0.1",
+  "description": "noah will let you know the water level of the nearest river in the menu bar.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Noah0x0/noah.git"
+  },
+  "author": "mesh1nek0x0",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Noah0x0/noah/issues"
+  },
+  "homepage": "https://github.com/Noah0x0/noah#readme"
+}
