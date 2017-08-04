@@ -2,8 +2,9 @@
   "name": "noah",
   "version": "0.0.1",
   "description": "noah will let you know the water level of the nearest river in the menu bar.",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
+    "start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Noah0x0/noah/issues"
   },
-  "homepage": "https://github.com/Noah0x0/noah#readme"
+  "homepage": "https://github.com/Noah0x0/noah#readme",
+  "devDependencies": {
+    "electron": "~1.6.2"
+  }
 }
