@@ -6,7 +6,7 @@ const mycron = require('cron').CronJob;
 let appIcon = null;
 
 app.on('ready', function ready() {
-  appIcon = new Tray(`${__dirname}/app/icon.png`);
+  appIcon = new Tray(`${__dirname}/icon/icon1.png`);
 
   const contextMenu = Menu.buildFromTemplate([
     {label: 'Item1', type: 'radio'},
@@ -31,11 +31,17 @@ function polling(func, cronTime) {
 
 function requestWaterLevel() {
   const min = 0 ;
-  const max = 10 ;
+  const max = 4 ;
   const randomNum = Math.floor( Math.random() * (max + 1 - min) ) + min;
-  if (randomNum / 2 === 0) {
-    appIcon.setImage(`${__dirname}/app/icon2.png`);
+  if (randomNum === 0) {
+    appIcon.setImage(`${__dirname}/icon/icon1.png`);
+  } else if (randomNum === 1) {
+    appIcon.setImage(`${__dirname}/icon/icon2.png`);
+  } else if (randomNum === 2) {
+    appIcon.setImage(`${__dirname}/icon/icon3.png`);
+  } else if (randomNum === 3) {
+    appIcon.setImage(`${__dirname}/icon/icon4.png`);
   } else {
-    appIcon.setImage(`${__dirname}/app/icon.png`);
+    appIcon.setImage(`${__dirname}/icon/icon5.png`);
   }
 }
