@@ -2,6 +2,9 @@
 
 const { app, Tray, Menu } = require('electron');
 const mycron = require('cron').CronJob;
+const fetch = require('isomorphic-fetch');
+
+const waterLevelURL = '';
 
 let appIcon = null;
 
@@ -17,7 +20,7 @@ app.on('ready', function ready() {
   appIcon.setToolTip('This is my application.');
   appIcon.setContextMenu(contextMenu);
 
-  polling(requestWaterLevel, '* * * * * *');
+  polling(requestWaterLevel, '*/2 * * * * *');
 });
 
 function polling(func, cronTime) {
@@ -44,4 +47,27 @@ function requestWaterLevel() {
   } else {
     appIcon.setImage(`${__dirname}/icon/icon5.png`);
   }
+
+  httpRequest(waterLevelURL, 'GET')
+    .then((res) => console.log(res))
+    .catch((err) => {
+      console.error(err.stack);
+    });
 }
+
+function httpRequest(path, method, body = undefined) {
+  return fetch(path, {
+    method,
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body
+  })
+    .then((res) => {
+      if (res.status >= 400) {
+        throw new Error("Bad response from server")
+      }
+      return res.json();
+    });
+}
+
