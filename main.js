@@ -3,6 +3,8 @@
 const { app, Tray, Menu } = require('electron');
 const mycron = require('cron').CronJob;
 const fetch = require('isomorphic-fetch');
+const notifier = require('node-notifier');
+const path = require('path');
 
 const waterLevelURL = '';
 
@@ -23,9 +25,28 @@ app.on('ready', function ready() {
   app.dock.hide();
 
   polling(requestWaterLevel, '*/2 * * * * *');
+  // String
+  scheduledNotify(generateNotify, '*/10 * * * * *');
 });
 
 function polling(func, cronTime) {
+  const job = new mycron({
+    cronTime: cronTime,
+    onTick: func,
+    start: true,
+  });
+  job.start();
+}
+
+function generateNotify() {
+  return notifier.notify({
+    'title': '警告',
+    'message': '水位が急上昇しています!',
+    'icon': path.join(__dirname, 'icon/noah-icon.png'), // Absolute path (doesn't work on balloons)
+});
+}
+
+function scheduledNotify(func, cronTime) {
   const job = new mycron({
     cronTime: cronTime,
     onTick: func,
@@ -72,4 +93,3 @@ function httpRequest(path, method, body = undefined) {
       return res.json();
     });
 }
-
