@@ -4,7 +4,15 @@ const electron = require('electron');
 const menubar = require('menubar');
 const path = require('path');
 
-const mb = menubar({index: path.join(`file://${ __dirname }/index.html`), width:300, height:200, preloadWindow:true});
+const mb = menubar({
+  dir: path.join(__dirname, '/app'),
+  width: 200,
+  height: 200,
+  icon: path.join(__dirname, '/app/icon.png'),
+  preloadWindow: true,
+  alwaysOnTop: false
+});
+
 mb.on('ready', function ready() {
   console.log('app is ready');
 });
