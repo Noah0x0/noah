@@ -19,6 +19,8 @@ app.on('ready', function ready() {
   ]);
   appIcon.setToolTip('This is my application.');
   appIcon.setContextMenu(contextMenu);
+  // hide icon on dock
+  app.dock.hide();
 
   polling(requestWaterLevel, '*/2 * * * * *');
 });
