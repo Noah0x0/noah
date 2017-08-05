@@ -19,5 +19,9 @@
   "homepage": "https://github.com/Noah0x0/noah#readme",
   "devDependencies": {
     "electron": "~1.6.2"
+  },
+  "dependencies": {
+    "path": "^0.12.7",
+    "menubar": "^5.2.3"
   }
 }
