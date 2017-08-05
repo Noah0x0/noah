@@ -10,19 +10,27 @@ let appIcon = null;
 let win = null;
 
 app.on('ready', function ready() {
-  appIcon = new Tray(`${__dirname}/icon/icon1.png`);
-
-  appIcon.setToolTip('This is my application.');
   // hide icon on dock
   app.dock.hide();
 
-  polling(requestWaterLevel, '*/2 * * * * *');
+  // Tray
+  appIcon = new Tray(`${__dirname}/icon/icon1.png`);
+  let trayBounds = appIcon.getBounds();
 
-  win = new BrowserWindow({frame: false, width: 800, height: 600});
+  // BrowserWindow
+  win = new BrowserWindow({
+    frame: false,
+    width: 200,
+    height: 200,
+    x: trayBounds.x - 80,
+    y: trayBounds.y,
+  });
   win.loadURL(`file://${__dirname}/app/index.html`);
   appIcon.on('click', () => {
     win.isVisible() ? win.hide() : win.show()
   });
+
+  polling(requestWaterLevel, '*/2 * * * * *');
 });
 
 
