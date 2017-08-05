@@ -19,6 +19,7 @@
   "homepage": "https://github.com/Noah0x0/noah#readme",
   "dependencies": {
     "cron": "^1.2.1",
-    "electron": "^1.6.2"
+    "electron": "^1.6.2",
+    "isomorphic-fetch": "^2.2.1"
   }
 }
