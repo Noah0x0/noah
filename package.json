@@ -17,10 +17,8 @@
     "url": "https://github.com/Noah0x0/noah/issues"
   },
   "homepage": "https://github.com/Noah0x0/noah#readme",
-  "devDependencies": {
-    "electron": "~1.6.2"
-  },
   "dependencies": {
+    "electron": "~1.6.2",
     "path": "^0.12.7",
     "menubar": "^5.2.3"
   }

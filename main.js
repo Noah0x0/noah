@@ -8,7 +8,7 @@ const mb = menubar({
   dir: path.join(__dirname, '/app'),
   width: 200,
   height: 200,
-  icon: path.join(__dirname, '/app/icon.png'),
+  icon: path.join(__dirname, '/app/Icon-Template.png'),
   preloadWindow: true,
   alwaysOnTop: false
 });
