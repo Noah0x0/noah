@@ -18,7 +18,7 @@ app.on('ready', function ready() {
 
   polling(requestWaterLevel, '*/2 * * * * *');
 
-  win = new BrowserWindow({width: 800, height: 600});
+  win = new BrowserWindow({frame: false, width: 800, height: 600});
   appIcon.on('click', () => {
     win.isVisible() ? win.hide() : win.show()
   });
