@@ -1,29 +1,31 @@
 'use strict';
 
-const { app, Tray, Menu } = require('electron');
+const { app, Tray, BrowserWindow } = require('electron');
 const mycron = require('cron').CronJob;
 const fetch = require('isomorphic-fetch');
 
 const waterLevelURL = '';
 
 let appIcon = null;
+let win = null;
 
 app.on('ready', function ready() {
   appIcon = new Tray(`${__dirname}/icon/icon1.png`);
 
-  const contextMenu = Menu.buildFromTemplate([
-    {label: 'Item1', type: 'radio'},
-    {label: 'Item2', type: 'radio'},
-    {label: 'Item3', type: 'radio', checked: true},
-    {label: 'Item4', type: 'radio'}
-  ]);
   appIcon.setToolTip('This is my application.');
-  appIcon.setContextMenu(contextMenu);
   // hide icon on dock
   app.dock.hide();
 
   polling(requestWaterLevel, '*/2 * * * * *');
+
+  win = new BrowserWindow({width: 800, height: 600});
+  appIcon.on('click', () => {
+    win.isVisible() ? win.hide() : win.show()
+  });
 });
+
+
+
 
 function polling(func, cronTime) {
   const job = new mycron({
