@@ -18,8 +18,6 @@
   },
   "homepage": "https://github.com/Noah0x0/noah#readme",
   "dependencies": {
-    "electron": "~1.6.2",
-    "path": "^0.12.7",
-    "menubar": "^5.2.3"
+    "electron": "~1.6.2"
   }
 }
