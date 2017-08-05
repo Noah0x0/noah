@@ -19,6 +19,7 @@ app.on('ready', function ready() {
   polling(requestWaterLevel, '*/2 * * * * *');
 
   win = new BrowserWindow({frame: false, width: 800, height: 600});
+  win.loadURL(`file://${__dirname}/app/index.html`);
   appIcon.on('click', () => {
     win.isVisible() ? win.hide() : win.show()
   });
