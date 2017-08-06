@@ -23,7 +23,7 @@ app.on('ready', function ready() {
   app.dock.hide();
 
   // Tray
-  appIcon = new Tray(`${__dirname}/icon/icon1.png`);
+  appIcon = new Tray(trayIcon1);
   let trayBounds = appIcon.getBounds();
 
   // BrowserWindow
@@ -35,6 +35,10 @@ app.on('ready', function ready() {
     y: trayBounds.y,
   });
   win.loadURL(`file://${__dirname}/app/index.html`);
+
+  win.on('blur', () =>{
+    win.hide()
+  });
 
   appIcon.on('click', () => {
     // win.setPosition(trayBounds.x - 80, trayBounds.y);

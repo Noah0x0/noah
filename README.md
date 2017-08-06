@@ -12,3 +12,6 @@ yarn install
 # Run the app
 yarn start
 ```
+
+## Credits
+Rain level iconset was designed by mesh1nek0x0 from [Flaticon](https://www.flaticon.com/)
