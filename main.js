@@ -111,6 +111,7 @@ function setTrayIconForWaterLevel(waterLevel) {
   const embankmentHeight = waterLevel.height;
   const currentWaterLevel = waterLevel.latestDate['4_10'].dataStr;
   const levelOfWaterLevel= (currentWaterLevel / embankmentHeight) * 100;
+  console.log(levelOfWaterLevel);
 
   let trayIcon;
   if (levelOfWaterLevel >= 0 && levelOfWaterLevel < 20) {
