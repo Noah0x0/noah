@@ -5,9 +5,10 @@ const mycron = require('cron').CronJob;
 const fetch = require('isomorphic-fetch');
 const notifier = require('node-notifier');
 
+// API URL
 const waterLevelURL = '';
 
-// icon
+// icon path
 const trayIcon1 = `${ __dirname }/icon/tray-icon1.png`;
 const trayIcon2 = `${ __dirname }/icon/tray-icon2.png`;
 const trayIcon3 = `${ __dirname }/icon/tray-icon3.png`;
@@ -15,6 +16,10 @@ const trayIcon4 = `${ __dirname }/icon/tray-icon4.png`;
 const trayIcon5 = `${ __dirname }/icon/tray-icon5.png`;
 const pushIcon = `${ __dirname }/icon/push-icon.png`;
 
+// HTML path
+const windowURL = `file://${__dirname}/app/index.html`;
+
+// Electron obj
 let appIcon = null;
 let win = null;
 
@@ -34,7 +39,7 @@ app.on('ready', function ready() {
     x: trayBounds.x - 80,
     y: trayBounds.y,
   });
-  win.loadURL(`file://${__dirname}/app/index.html`);
+  win.loadURL(windowURL);
   // Initialize hiding window
   win.hide();
 
@@ -47,29 +52,10 @@ app.on('ready', function ready() {
     win.isVisible() ? win.hide() : win.show()
   });
 
-  polling(requestWaterLevel, '*/2 * * * * *');
-  // String
-  scheduledNotify(generateNotify, '*/10 * * * * *');
+  polling(requestWaterLevel, '* */10 * * * *');
 });
 
 function polling(func, cronTime) {
-  const job = new mycron({
-    cronTime: cronTime,
-    onTick: func,
-    start: true,
-  });
-  job.start();
-}
-
-function generateNotify() {
-  return notifier.notify({
-    'title': '警告',
-    'message': '水位が急上昇しています!',
-    'icon': pushIcon,
-  });
-}
-
-function scheduledNotify(func, cronTime) {
   const job = new mycron({
     cronTime: cronTime,
     onTick: func,
@@ -122,12 +108,23 @@ function setTrayIconForWaterLevel(waterLevel) {
     trayIcon = trayIcon2;
   } else if (levelOfWaterLevel >= 40 && levelOfWaterLevel < 60) {
     trayIcon = trayIcon3;
+    generateNotify(); // TODO: 水位の遷移によって通知を出し分ける
   } else if (levelOfWaterLevel >= 60 && levelOfWaterLevel < 80) {
     trayIcon = trayIcon4;
+    generateNotify(); // TODO: 水位の遷移によって通知を出し分ける
   } else if (levelOfWaterLevel >= 80 && levelOfWaterLevel < 100) {
     trayIcon = trayIcon5;
+    generateNotify(); // TODO: 水位の遷移によって通知を出し分ける
   } else {
     throw new Error(`Fault levelOfWaterLevel. levelOfWaterLevel: ${levelOfWaterLevel}`);
   }
   appIcon.setImage(trayIcon);
+}
+
+function generateNotify() {
+  return notifier.notify({
+    'title': '警告',
+    'message': '水位が急上昇しています!',
+    'icon': pushIcon,
+  });
 }
