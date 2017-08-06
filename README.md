@@ -15,3 +15,11 @@ yarn start
 
 ## Credits
 Rain level iconset was designed by mesh1nek0x0 from [Flaticon](https://www.flaticon.com/)
+
+## Downloads
+you can download beta version for mac.
+https://drive.google.com/open?id=0B6uzpRVjk9MVUkQ2OXNjWE16WFE
+
+## Notice
+beta version cannot quit by GUI.
+please quit by activity monitor.
