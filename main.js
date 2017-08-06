@@ -4,7 +4,6 @@ const { app, Tray, Menu } = require('electron');
 const mycron = require('cron').CronJob;
 const fetch = require('isomorphic-fetch');
 const notifier = require('node-notifier');
-const path = require('path');
 
 const waterLevelURL = '';
 
@@ -50,7 +49,7 @@ function generateNotify() {
   return notifier.notify({
     'title': '警告',
     'message': '水位が急上昇しています!',
-    'icon': path.join(pushIcon), // Absolute path (doesn't work on balloons)
+    'icon': pushIcon,
   });
 }
 
