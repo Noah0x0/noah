@@ -5,6 +5,7 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
+    "pack:osx": "build --mac --x64",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,10 +18,22 @@
     "url": "https://github.com/Noah0x0/noah/issues"
   },
   "homepage": "https://github.com/Noah0x0/noah#readme",
+  "build": {
+    "appId": "com.electron.noah",
+    "mac": {
+      "target": "dmg"
+    },
+    "directories": {
+      "output": "docs"
+    }
+  },
   "dependencies": {
     "cron": "^1.2.1",
-    "electron": "^1.6.2",
     "isomorphic-fetch": "^2.2.1",
     "node-notifier": "^5.1.2"
+  },
+  "devDependencies": {
+    "electron": "^1.6.11",
+    "electron-builder": "^19.19.1"
   }
 }
