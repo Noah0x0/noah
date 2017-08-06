@@ -3,8 +3,17 @@
 const { app, Tray, BrowserWindow } = require('electron');
 const mycron = require('cron').CronJob;
 const fetch = require('isomorphic-fetch');
+const notifier = require('node-notifier');
 
 const waterLevelURL = '';
+
+// icon
+const trayIcon1 = `${ __dirname }/icon/tray-icon1.png`;
+const trayIcon2 = `${ __dirname }/icon/tray-icon2.png`;
+const trayIcon3 = `${ __dirname }/icon/tray-icon3.png`;
+const trayIcon4 = `${ __dirname }/icon/tray-icon4.png`;
+const trayIcon5 = `${ __dirname }/icon/tray-icon5.png`;
+const pushIcon = `${ __dirname }/icon/push-icon.png`;
 
 let appIcon = null;
 let win = null;
@@ -33,6 +42,8 @@ app.on('ready', function ready() {
   });
 
   polling(requestWaterLevel, '*/2 * * * * *');
+  // String
+  scheduledNotify(generateNotify, '*/10 * * * * *');
 });
 
 
@@ -47,20 +58,37 @@ function polling(func, cronTime) {
   job.start();
 }
 
+function generateNotify() {
+  return notifier.notify({
+    'title': '警告',
+    'message': '水位が急上昇しています!',
+    'icon': pushIcon,
+  });
+}
+
+function scheduledNotify(func, cronTime) {
+  const job = new mycron({
+    cronTime: cronTime,
+    onTick: func,
+    start: true,
+  });
+  job.start();
+}
+
 function requestWaterLevel() {
   const min = 0 ;
   const max = 4 ;
   const randomNum = Math.floor( Math.random() * (max + 1 - min) ) + min;
   if (randomNum === 0) {
-    appIcon.setImage(`${__dirname}/icon/icon1.png`);
+    appIcon.setImage(trayIcon1);
   } else if (randomNum === 1) {
-    appIcon.setImage(`${__dirname}/icon/icon2.png`);
+    appIcon.setImage(trayIcon2);
   } else if (randomNum === 2) {
-    appIcon.setImage(`${__dirname}/icon/icon3.png`);
+    appIcon.setImage(trayIcon3);
   } else if (randomNum === 3) {
-    appIcon.setImage(`${__dirname}/icon/icon4.png`);
+    appIcon.setImage(trayIcon4);
   } else {
-    appIcon.setImage(`${__dirname}/icon/icon5.png`);
+    appIcon.setImage(trayIcon5);
   }
 
   httpRequest(waterLevelURL, 'GET')
@@ -85,4 +113,3 @@ function httpRequest(path, method, body = undefined) {
       return res.json();
     });
 }
-
