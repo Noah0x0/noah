@@ -35,6 +35,8 @@ app.on('ready', function ready() {
     y: trayBounds.y,
   });
   win.loadURL(`file://${__dirname}/app/index.html`);
+  // Initialize hiding window
+  win.hide();
 
   win.on('blur', () =>{
     win.hide()
