@@ -26,7 +26,9 @@ app.on('ready', function ready() {
     y: trayBounds.y,
   });
   win.loadURL(`file://${__dirname}/app/index.html`);
+
   appIcon.on('click', () => {
+    // win.setPosition(trayBounds.x - 80, trayBounds.y);
     win.isVisible() ? win.hide() : win.show()
   });
 
