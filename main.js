@@ -46,9 +46,6 @@ app.on('ready', function ready() {
   scheduledNotify(generateNotify, '*/10 * * * * *');
 });
 
-
-
-
 function polling(func, cronTime) {
   const job = new mycron({
     cronTime: cronTime,
@@ -76,23 +73,15 @@ function scheduledNotify(func, cronTime) {
 }
 
 function requestWaterLevel() {
-  const min = 0 ;
-  const max = 4 ;
-  const randomNum = Math.floor( Math.random() * (max + 1 - min) ) + min;
-  if (randomNum === 0) {
-    appIcon.setImage(trayIcon1);
-  } else if (randomNum === 1) {
-    appIcon.setImage(trayIcon2);
-  } else if (randomNum === 2) {
-    appIcon.setImage(trayIcon3);
-  } else if (randomNum === 3) {
-    appIcon.setImage(trayIcon4);
-  } else {
-    appIcon.setImage(trayIcon5);
-  }
-
   httpRequest(waterLevelURL, 'GET')
-    .then((res) => console.log(res))
+    .then((res) => {
+      console.log(res);
+      try {
+        setTrayIconForWaterLevel(res);
+      } catch (err) {
+        throw err;
+      }
+    })
     .catch((err) => {
       console.error(err.stack);
     });
@@ -112,4 +101,26 @@ function httpRequest(path, method, body = undefined) {
       }
       return res.json();
     });
+}
+
+function setTrayIconForWaterLevel(waterLevel) {
+  const embankmentHeight = waterLevel.height;
+  const currentWaterLevel = waterLevel.latestDate['4_10'].dataStr;
+  const levelOfWaterLevel= (currentWaterLevel / embankmentHeight) * 100;
+
+  let trayIcon;
+  if (levelOfWaterLevel >= 0 && levelOfWaterLevel < 20) {
+    trayIcon = trayIcon1;
+  } else if (levelOfWaterLevel >= 20 && levelOfWaterLevel < 40) {
+    trayIcon = trayIcon2;
+  } else if (levelOfWaterLevel >= 40 && levelOfWaterLevel < 60) {
+    trayIcon = trayIcon3;
+  } else if (levelOfWaterLevel >= 60 && levelOfWaterLevel < 80) {
+    trayIcon = trayIcon4;
+  } else if (levelOfWaterLevel >= 80 && levelOfWaterLevel < 100) {
+    trayIcon = trayIcon5;
+  } else {
+    throw new Error(`Fault levelOfWaterLevel. levelOfWaterLevel: ${levelOfWaterLevel}`);
+  }
+  appIcon.setImage(trayIcon);
 }
