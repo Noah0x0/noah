@@ -7,6 +7,7 @@ const notifier = require('node-notifier');
 
 // API URL
 const waterLevelURL = '';
+const rainFallURL = '';
 
 // icon path
 const trayIcon1 = `${ __dirname }/icon/tray-icon1.png`;
@@ -108,13 +109,13 @@ function setTrayIconForWaterLevel(waterLevel) {
     trayIcon = trayIcon2;
   } else if (levelOfWaterLevel >= 40 && levelOfWaterLevel < 60) {
     trayIcon = trayIcon3;
-    generateNotify(); // TODO: 水位の遷移によって通知を出し分ける
+    generateNotify(); // TODO: 水位 or 降水量の遷移によって通知を出し分ける
   } else if (levelOfWaterLevel >= 60 && levelOfWaterLevel < 80) {
     trayIcon = trayIcon4;
-    generateNotify(); // TODO: 水位の遷移によって通知を出し分ける
+    generateNotify(); // TODO: 水位 or 降水量の遷移によって通知を出し分ける
   } else if (levelOfWaterLevel >= 80 && levelOfWaterLevel < 100) {
     trayIcon = trayIcon5;
-    generateNotify(); // TODO: 水位の遷移によって通知を出し分ける
+    generateNotify(); // TODO: 水位or 降水量の遷移によって通知を出し分ける
   } else {
     throw new Error(`Fault levelOfWaterLevel. levelOfWaterLevel: ${levelOfWaterLevel}`);
   }
