@@ -1,6 +1,6 @@
 'use strict';
 
-const { app, Tray, Menu } = require('electron');
+const { app, Tray, BrowserWindow } = require('electron');
 const mycron = require('cron').CronJob;
 const fetch = require('isomorphic-fetch');
 const notifier = require('node-notifier');
@@ -16,25 +16,38 @@ const trayIcon5 = `${ __dirname }/icon/tray-icon5.png`;
 const pushIcon = `${ __dirname }/icon/push-icon.png`;
 
 let appIcon = null;
+let win = null;
 
 app.on('ready', function ready() {
-  appIcon = new Tray(trayIcon1);
-
-  const contextMenu = Menu.buildFromTemplate([
-    {label: 'Item1', type: 'radio'},
-    {label: 'Item2', type: 'radio'},
-    {label: 'Item3', type: 'radio', checked: true},
-    {label: 'Item4', type: 'radio'}
-  ]);
-  appIcon.setToolTip('This is my application.');
-  appIcon.setContextMenu(contextMenu);
   // hide icon on dock
   app.dock.hide();
+
+  // Tray
+  appIcon = new Tray(`${__dirname}/icon/icon1.png`);
+  let trayBounds = appIcon.getBounds();
+
+  // BrowserWindow
+  win = new BrowserWindow({
+    frame: false,
+    width: 200,
+    height: 200,
+    x: trayBounds.x - 80,
+    y: trayBounds.y,
+  });
+  win.loadURL(`file://${__dirname}/app/index.html`);
+
+  appIcon.on('click', () => {
+    // win.setPosition(trayBounds.x - 80, trayBounds.y);
+    win.isVisible() ? win.hide() : win.show()
+  });
 
   polling(requestWaterLevel, '*/2 * * * * *');
   // String
   scheduledNotify(generateNotify, '*/10 * * * * *');
 });
+
+
+
 
 function polling(func, cronTime) {
   const job = new mycron({
