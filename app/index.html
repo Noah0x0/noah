@@ -18,6 +18,12 @@
         <div class="pane">
           <div class="list-group text-center">
             <h3 class="padded-vertically">降水量</h3>
+            <script type="text/javascript">
+              const ipcRenderer = require( 'electron' ).ipcRenderer;
+              ipcRenderer.on( 'ping', ( ev, message ) => {
+                alert( message );
+              });
+            </script>
             <p class="">200 mm</p>
             <h3 class="padded-vertically">鴨川</h3>
             <p class="">0.7/0.5 m</p>
