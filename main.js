@@ -45,12 +45,13 @@ app.on('ready', function ready() {
   win.hide();
 
   win.on('blur', () =>{
-    win.hide()
+    win.hide();
   });
 
   appIcon.on('click', () => {
     // win.setPosition(trayBounds.x - 80, trayBounds.y);
-    win.isVisible() ? win.hide() : win.show()
+    win.isVisible() ? win.hide() : win.show();
+    win.webContents.send( 'ping', 'test' );
   });
 
   polling(requestWaterLevel, '* */10 * * * *');
