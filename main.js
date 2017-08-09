@@ -37,5 +37,5 @@ app.on('ready', function ready() {
     win.isVisible() ? win.hide() : win.show()
   });
 
-  lib.polling(lib.requestWaterLevel(appIcon), '* */10 * * * *');
+  lib.polling(lib.requestWaterLevel, appIcon, '* */10 * * * *');
 });
