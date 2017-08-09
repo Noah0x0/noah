@@ -4,16 +4,20 @@ const { app, Tray, BrowserWindow } = require('electron');
 const lib = require('./lib/');
 const constants = require('./constants');
 
+// Electron obj
+let appIcon = null;
+let win = null;
+
 app.on('ready', function ready() {
   // hide icon on dock
   app.dock.hide();
 
   // Tray
-  const appIcon = new Tray(constants.trayIcon1);
+  appIcon = new Tray(constants.trayIcon1);
   const trayBounds = appIcon.getBounds();
 
   // BrowserWindow
-  const win = new BrowserWindow({
+  win = new BrowserWindow({
     frame: false,
     width: 200,
     height: 200,
