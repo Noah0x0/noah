@@ -1,3 +1,7 @@
+body {
+    font-family: 'Noto Sans Japanese';
+}
+
 .noah-header {
     display: flex;
     padding: 1px 6px;
