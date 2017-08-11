@@ -17,11 +17,7 @@ class App extends Component {
 
   componentWillMount() {
     ipcRenderer.on('dataReflect', (ev, data) => {
-      this.setState({
-        data: {
-          precipitation: data
-        }
-      });
+      this.setState({ data });
     });
   }
 
