@@ -2,31 +2,33 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8">
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="../photon/css/photon.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="./css/noto/css/noto.css">
+  <link rel="stylesheet" href="./css/index.css">
   <title>NOAH</title>
 </head>
 <body>
-  <div class="window">
-    <div class="window-content">
-      <div class="pane-group">
-        <div class="pane">
-          <div class="list-group text-center">
-            <img class="padded-vertically-more" src="../icon/window-rain3.png" style="width: 70px">
-          </div>
-        </div>
-        <div class="pane">
-          <div class="list-group text-center">
-            <h3 class="padded-vertically">降水量</h3>
-            <p class="">200 mm</p>
-            <h3 class="padded-vertically">鴨川</h3>
-            <p class="">0.7/0.5 m</p>
-            <div id="test"></div>
-          </div>
-        </div>
-      </div>
+  <header class="noah-header">
+    <i class="fa fa-refresh" aria-hidden="true" aria-label="Refresh"></i>
+    <h1>noah</h1>
+    <i class="fa fa-cog" aria-hidden="true" aria-label="Options"></i>
+  </header>
+  <main class="noah-main">
+    <div class="noah-select">
+      <p>Japan, Ishikawa, Asano river</p>
     </div>
-  </div>
-  <script src="./index.js"></script>
+    <div class="noah-rainimage">
+      <i class="fa fa-umbrella" aria-hidden="true"></i>
+    </div>
+    <div class="noah-data">
+      <h2>Precipitation</h2>
+      <p>200 mm</p>
+      <h2>Trendency</h2>
+      <p>0.7 / 0.5 m</p>
+      <div id="test"></div>
+    </div>
+  </main>
+  <script src="./js/index.js"></script>
 </body>
 </html>

@@ -27,8 +27,8 @@ app.on('ready', () => {
     frame: false,
     resizable: false,
     alwaysOnTop: true,
-    width: 200,
-    height: 200,
+    width: 350,
+    height: 300,
     x: trayBounds.x - 80,
     y: trayBounds.y,
   });
