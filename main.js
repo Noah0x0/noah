@@ -1,8 +1,11 @@
 'use strict';
 
 const { app, Tray, BrowserWindow } = require('electron');
+const electronReload = require('electron-reload');
 const lib = require('./lib/');
 const constants = require('./constants');
+
+electronReload(__dirname);
 
 // Electron obj
 let appIcon = null;
