@@ -7,8 +7,8 @@ const iconCog = document.querySelector('.fa-cog');
 const iconRefresh = document.querySelector('.fa-refresh');
 
 ipcRenderer.on('dataReflect', (ev, data) => {
-    const testDiv = document.getElementById('test');
-    testDiv.innerHTML = data;
+    const precipitation = document.querySelector('.data-precipitation');
+    precipitation.innerHTML = data;
 });
 
 iconCog.addEventListener('click', () => {
