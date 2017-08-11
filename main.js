@@ -11,7 +11,8 @@ electronReload(__dirname);
 let appIcon = null;
 let win = null;
 
-app.on('ready', function ready() {
+// init
+app.on('ready', () => {
   // hide icon on dock
   app.dock.hide();
 
@@ -19,27 +20,36 @@ app.on('ready', function ready() {
   appIcon = new Tray(constants.trayIcon1);
   const trayBounds = appIcon.getBounds();
 
-  // BrowserWindow
+  // Window
   win = new BrowserWindow({
+    title: 'noah',
+    show: false,
     frame: false,
+    resizable: false,
+    alwaysOnTop: true,
     width: 200,
     height: 200,
     x: trayBounds.x - 80,
     y: trayBounds.y,
   });
   win.loadURL(constants.windowURL);
-  // Initialize hiding window
-  win.hide();
 
-  win.on('blur', () =>{
-    win.hide();
-  });
+  // On blur hide window
+  win.on('blur', () => win.hide());
 
   appIcon.on('click', () => {
-    // win.setPosition(trayBounds.x - 80, trayBounds.y);
-    win.isVisible() ? win.hide() : win.show();
-    win.webContents.send( 'ping', 'test' );
+    const isVisible = win.isVisible();
+    if (isVisible) {
+      win.hide();
+    } else {
+      win.show();
+
+      // View Reflect
+      const data = 99999; // example data
+      win.webContents.send('dataReflect', data);
+    }
   });
 
+  // Run Polling
   lib.polling(lib.requestWaterLevel, appIcon, '* */10 * * * *');
 });
