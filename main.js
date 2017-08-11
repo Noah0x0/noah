@@ -22,8 +22,11 @@ app.on('ready', () => {
 
   // Window
   win = new BrowserWindow({
+    title: 'noah',
     show: false,
     frame: false,
+    resizable: false,
+    alwaysOnTop: true,
     width: 200,
     height: 200,
     x: trayBounds.x - 80,
