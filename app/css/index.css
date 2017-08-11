@@ -1,12 +1,16 @@
 body {
     font-family: 'Noto Sans Japanese';
+    margin: 0;
 }
 
 .noah-header {
     display: flex;
-    padding: 1px 6px;
+    align-items: center;
+    padding: 5px 8px;
 }
 
 .noah-header h1 {
     margin: auto;
+    font-size: 12px;
+    font-weight: 300;
 }
