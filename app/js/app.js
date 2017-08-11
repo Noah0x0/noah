@@ -11,6 +11,9 @@ class App extends Component {
     this.state = {
       data: {
         precipitation: 0
+      },
+      location: {
+        list: []
       }
     }
   }
@@ -19,13 +22,16 @@ class App extends Component {
     ipcRenderer.on('dataReflect', (ev, data) => {
       this.setState({ data });
     });
+    ipcRenderer.on('locationReflect', (ev, location) => {
+      this.setState({ location });
+    });
   }
 
   render() {
     return (
       <div>
         <Header />
-        <Main {...this.state.data} />
+        <Main {...this.state} />
       </div>
     );
   }

@@ -13,7 +13,7 @@ const Main = (props) => {
       </div>
       <div className="noah-data">
         <h2>Precipitation</h2>
-        <p>{props.precipitation} mm</p>
+        <p>{props.data.precipitation} mm</p>
         <h2>Trendency</h2>
         <p>0.7 / 0.5 m</p>
       </div>
