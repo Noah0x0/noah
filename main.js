@@ -36,9 +36,11 @@ app.on('ready', function ready() {
   });
 
   appIcon.on('click', () => {
-    // win.setPosition(trayBounds.x - 80, trayBounds.y);
     win.isVisible() ? win.hide() : win.show();
-    win.webContents.send( 'ping', 'test' );
+
+    // View Reflect
+    const data = 99999; // example data
+    win.webContents.send('dataReflect', data);
   });
 
   lib.polling(lib.requestWaterLevel, appIcon, '* */10 * * * *');
