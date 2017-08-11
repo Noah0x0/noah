@@ -19,7 +19,7 @@ app.on('ready', function ready() {
   appIcon = new Tray(constants.trayIcon1);
   const trayBounds = appIcon.getBounds();
 
-  // BrowserWindow
+  // Window
   win = new BrowserWindow({
     frame: false,
     width: 200,
@@ -31,11 +31,11 @@ app.on('ready', function ready() {
   // Initialize hiding window
   win.hide();
 
-  win.on('blur', () =>{
-    win.hide();
-  });
+  // On blur hide window
+  win.on('blur', () => win.hide());
 
   appIcon.on('click', () => {
+    // Switch window
     win.isVisible() ? win.hide() : win.show();
 
     // View Reflect
@@ -43,5 +43,6 @@ app.on('ready', function ready() {
     win.webContents.send('dataReflect', data);
   });
 
+  // Run Polling
   lib.polling(lib.requestWaterLevel, appIcon, '* */10 * * * *');
 });
