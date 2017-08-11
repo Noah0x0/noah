@@ -1,13 +1,13 @@
 'use strict';
 
-const { remote } = require('electron');
+const { remote, ipcRenderer } = require('electron');
 const Menu = remote.Menu;
 const MenuItem = remote.MenuItem;
 
 const about = {
   label: 'About noah',
   type: 'normal',
-  role: 'about'
+  click: () => ipcRenderer.send('about'),
 };
 const quit = {
   label: 'Quit noah',
