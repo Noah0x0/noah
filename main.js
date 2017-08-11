@@ -11,7 +11,8 @@ electronReload(__dirname);
 let appIcon = null;
 let win = null;
 
-app.on('ready', function ready() {
+// init
+app.on('ready', () => {
   // hide icon on dock
   app.dock.hide();
 
@@ -21,6 +22,7 @@ app.on('ready', function ready() {
 
   // Window
   win = new BrowserWindow({
+    show: false,
     frame: false,
     width: 200,
     height: 200,
@@ -28,8 +30,6 @@ app.on('ready', function ready() {
     y: trayBounds.y,
   });
   win.loadURL(constants.windowURL);
-  // Initialize hiding window
-  win.hide();
 
   // On blur hide window
   win.on('blur', () => win.hide());
