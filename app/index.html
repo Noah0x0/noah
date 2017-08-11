@@ -9,25 +9,12 @@
   <title>NOAH</title>
 </head>
 <body>
-  <header class="noah-header">
-    <i class="fa fa-refresh" aria-hidden="true" aria-label="Refresh"></i>
-    <h1>noah</h1>
-    <i class="fa fa-cog" aria-hidden="true" aria-label="Options"></i>
-  </header>
-  <main class="noah-main">
-    <div class="noah-select">
-      <p>Japan, Ishikawa, Asano river</p>
-    </div>
-    <div class="noah-rainimage">
-      <i class="fa fa-umbrella" aria-hidden="true"></i>
-    </div>
-    <div class="noah-data">
-      <h2>Precipitation</h2>
-      <p><span class="data-precipitation">0</span> mm</p>
-      <h2>Trendency</h2>
-      <p>0.7 / 0.5 m</p>
-    </div>
-  </main>
-  <script src="./index.js"></script>
+  <div id="app"></div>
+  <script>
+    require('babel-register')({
+      presets: ['es2015', 'react']
+    });
+    require('./index.js');
+  </script>
 </body>
 </html>
