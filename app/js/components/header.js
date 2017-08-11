@@ -1,6 +1,6 @@
 'use strict';
 
-import React, { Component } from 'react';
+import React from 'react';
 import { ipcRenderer } from 'electron';
 import getMenu from '../menu';
 
