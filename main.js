@@ -38,12 +38,16 @@ app.on('ready', () => {
   win.on('blur', () => win.hide());
 
   appIcon.on('click', () => {
-    // Switch window
-    win.isVisible() ? win.hide() : win.show();
+    const isVisible = win.isVisible();
+    if (isVisible) {
+      win.hide();
+    } else {
+      win.show();
 
-    // View Reflect
-    const data = 99999; // example data
-    win.webContents.send('dataReflect', data);
+      // View Reflect
+      const data = 99999; // example data
+      win.webContents.send('dataReflect', data);
+    }
   });
 
   // Run Polling
