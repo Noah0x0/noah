@@ -30,6 +30,8 @@ app.on('ready', () => {
     alwaysOnTop: true,
     width: 350,
     height: 300,
+    minWidth: 350,
+    minHeight: 300,
     x: trayBounds.x - 80,
     y: trayBounds.y,
   });

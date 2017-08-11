@@ -1,6 +1,6 @@
 'use strict';
 
-const { remote, ipcRenderer } = require('electron');
+import { remote, ipcRenderer } from 'electron';
 const Menu = remote.Menu;
 const MenuItem = remote.MenuItem;
 
@@ -16,12 +16,12 @@ const quit = {
   role: 'quit'
 };
 
-module.exports = {
-  getMenu: () => {
-    const menu = new Menu();
-    menu.append(new MenuItem(about));
-    menu.append(new MenuItem({ type: 'separator' }));
-    menu.append(new MenuItem(quit));
-    return menu;
-  },
-}
+const getMenu = () => {
+  const menu = new Menu();
+  menu.append(new MenuItem(about));
+  menu.append(new MenuItem({ type: 'separator' }));
+  menu.append(new MenuItem(quit));
+  return menu;
+};
+
+export default getMenu;
