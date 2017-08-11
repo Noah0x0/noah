@@ -46,9 +46,13 @@ app.on('ready', () => {
       win.show();
 
       // View Reflect
-      const data = 99999; // example data
-      win.webContents.send('dataReflect', data);
+      win.webContents.send('dataReflect', lib.getViewData());
     }
+  });
+
+  // Refresh
+  ipcMain.on('refresh', () => {
+    win.webContents.send('dataReflect', lib.getViewData());
   });
 
   // About Setting
