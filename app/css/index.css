@@ -1,0 +1,8 @@
+.noah-header {
+    display: flex;
+    padding: 1px 6px;
+}
+
+.noah-header h1 {
+    margin: auto;
+}
