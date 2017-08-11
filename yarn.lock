@@ -453,6 +453,14 @@ ecc-jsbn@~0.1.1:
   dependencies:
     jsbn "~0.1.0"
 
+electron:
+  version "1.7.5"
+  resolved "https://registry.yarnpkg.com/electron/-/electron-1.7.5.tgz#065a3102bf8b87102df50c50985fefe6c569045b"
+  dependencies:
+    "@types/node" "^7.0.18"
+    electron-download "^3.0.1"
+    extract-zip "^1.0.3"
+
 electron-builder-http@~19.19.0, electron-builder-http@19.19.0:
   version "19.19.0"
   resolved "https://registry.yarnpkg.com/electron-builder-http/-/electron-builder-http-19.19.0.tgz#20f908fcd1bbe202fd44a9623abd9e4d7bc98825"
@@ -570,14 +578,6 @@ electron-reload:
   resolved "https://registry.yarnpkg.com/electron-reload/-/electron-reload-1.2.1.tgz#616e906e5dbd1cce97222ee4299751c3b285bf2b"
   dependencies:
     chokidar "^1.5.1"
-
-electron@^1.6.11:
-  version "1.7.5"
-  resolved "https://registry.yarnpkg.com/electron/-/electron-1.7.5.tgz#065a3102bf8b87102df50c50985fefe6c569045b"
-  dependencies:
-    "@types/node" "^7.0.18"
-    electron-download "^3.0.1"
-    extract-zip "^1.0.3"
 
 encoding@^0.1.11:
   version "0.1.12"

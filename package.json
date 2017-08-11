@@ -28,13 +28,13 @@
     }
   },
   "dependencies": {
+    "about-window": "^1.7.0",
     "cron": "^1.2.1",
+    "electron": "^1.7.5",
     "isomorphic-fetch": "^2.2.1",
     "node-notifier": "^5.1.2"
   },
   "devDependencies": {
-    "about-window": "^1.7.0",
-    "electron": "^1.6.11",
     "electron-builder": "^19.19.1",
     "electron-reload": "^1.2.1"
   }
