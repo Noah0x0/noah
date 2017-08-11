@@ -1,6 +1,7 @@
 'use strict';
 
-const { app, Tray, BrowserWindow } = require('electron');
+const { app, Tray, BrowserWindow, ipcMain } = require('electron');
+const openAboutWindow = require('about-window').default;
 const electronReload = require('electron-reload');
 const lib = require('./lib/');
 const constants = require('./constants');
@@ -49,6 +50,17 @@ app.on('ready', () => {
       win.webContents.send('dataReflect', data);
     }
   });
+
+  // About Setting
+  ipcMain.on('about', () => openAboutWindow({
+    icon_path: constants.pushIcon,
+    description: 'noah will let you know the water level of the nearest river in the menu bar.',
+    css_path: constants.aboutCss,
+    win_options: {
+      height: 330,
+      width: 550,
+    }
+  }));
 
   // Run Polling
   lib.polling(lib.requestWaterLevel, appIcon, '* */10 * * * *');

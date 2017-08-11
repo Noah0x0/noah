@@ -14,5 +14,8 @@ module.exports = {
     rainFallURL: '',
 
     // HTML path
-    windowURL: `file://${__dirname}/app/index.html`
+    windowURL: `file://${__dirname}/app/index.html`,
+
+    // CSS path
+    aboutCss: `${ __dirname }/app/css/about.css`
 };
