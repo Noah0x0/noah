@@ -48,14 +48,15 @@ app.on('ready', () => {
       win.show();
 
       // View Reflect
-      win.webContents.send('dataReflect', lib.getData());
+      win.webContents.send('dataReflect', lib.getData(0));
       win.webContents.send('locationReflect', lib.getLocation());
     }
   });
 
   // Refresh
-  ipcMain.on('refresh', () => {
-    win.webContents.send('dataReflect', lib.getData());
+  ipcMain.on('refresh', (e, current) => {
+    win.webContents.send('dataReflect', lib.getData(current));
+    win.webContents.send('locationReflect', lib.getLocation());
   });
 
   // About Setting

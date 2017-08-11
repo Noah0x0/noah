@@ -8,13 +8,13 @@ import Main from './components/main';
 class App extends Component {
   constructor() {
     super();
+    this.updateCurrent = this.updateCurrent.bind(this);
     this.state = {
+      current: 0,
+      location: ['---'],
       data: {
         precipitation: 0
       },
-      location: {
-        list: []
-      }
     }
   }
 
@@ -27,11 +27,16 @@ class App extends Component {
     });
   }
 
+  updateCurrent(current) {
+    ipcRenderer.send('refresh', current);
+    this.setState({ current });
+  }
+
   render() {
     return (
       <div>
-        <Header />
-        <Main {...this.state} />
+        <Header current={this.state.current} />
+        <Main {...this.state} changeLocation={this.updateCurrent} />
       </div>
     );
   }
