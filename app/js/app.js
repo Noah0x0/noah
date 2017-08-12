@@ -13,7 +13,9 @@ class App extends Component {
       current: 0,
       location: ['---'],
       data: {
-        precipitation: 0
+        precipitation: 0,
+        trendencyPr: 0,
+        trendencyWl: 0,
       },
     }
   }
