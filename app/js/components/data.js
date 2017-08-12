@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import ArrowLevel from './arrowlevel';
 
 const Data = (props) => {
   return (
@@ -14,11 +15,11 @@ const Data = (props) => {
         <div className="noah-data-trendency-inner">
           <div>
             <h3>Precipitation</h3>
-            <p>↑</p>
+            <ArrowLevel level={props.data.trendencyPr} />
           </div>
           <div>
             <h3>Water Level</h3>
-            <p>→</p>
+            <ArrowLevel level={props.data.trendencyWl} />
           </div>
         </div>
       </div>
