@@ -1,19 +1,22 @@
 'use strict';
 
-import React, { Component } from 'react';
+import React from 'react';
+import Location from './location';
 
 const Main = (props) => {
   return (
     <main className="noah-main">
-      <div className="noah-select">
-        <p>Japan, Ishikawa, Asano river</p>
-      </div>
+      <Location
+        current={props.current}
+        location={props.location}
+        changeLocation={props.changeLocation}
+      />
       <div className="noah-rainimage">
         <i className="fa fa-umbrella" aria-hidden="true"></i>
       </div>
       <div className="noah-data">
         <h2>Precipitation</h2>
-        <p>{props.precipitation} mm</p>
+        <p>{props.data.precipitation} mm</p>
         <h2>Trendency</h2>
         <p>0.7 / 0.5 m</p>
       </div>
