@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Location from './location';
+import Data from './data';
 
 const Main = (props) => {
   return (
@@ -14,12 +15,7 @@ const Main = (props) => {
       <div className="noah-rainimage">
         <i className="fa fa-umbrella" aria-hidden="true"></i>
       </div>
-      <div className="noah-data">
-        <h2>Precipitation</h2>
-        <p>{props.data.precipitation} mm</p>
-        <h2>Trendency</h2>
-        <p>0.7 / 0.5 m</p>
-      </div>
+      <Data data={props.data} />
     </main>
   );
 };
