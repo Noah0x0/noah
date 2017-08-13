@@ -31,7 +31,7 @@ class App extends Component {
 
   updateCurrent(current) {
     ipcRenderer.send('updateLocation', current);
-    ipcRenderer.send('refresh', current);
+    ipcRenderer.send('refresh');
     this.setState({ current });
   }
 

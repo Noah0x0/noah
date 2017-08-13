@@ -55,7 +55,7 @@ app.on('ready', () => {
       win.show();
 
       // View Reflect
-      win.webContents.send('dataReflect', lib.getData(0));
+      win.webContents.send('dataReflect', lib.getData());
       win.webContents.send('locationReflect', lib.getLocation());
     }
   });
@@ -67,8 +67,8 @@ app.on('ready', () => {
   });
 
   // Refresh
-  ipcMain.on('refresh', (e, current) => {
-    win.webContents.send('dataReflect', lib.getData(current));
+  ipcMain.on('refresh', () => {
+    win.webContents.send('dataReflect', lib.getData());
     win.webContents.send('locationReflect', lib.getLocation());
   });
 
