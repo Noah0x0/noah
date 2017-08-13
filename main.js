@@ -71,5 +71,5 @@ app.on('ready', () => {
   }));
 
   // Run Polling
-  lib.polling(lib.requestWaterLevel, [country, prefecture, river, appIcon], '* */10 * * * *');
+  lib.polling(lib.requestWaterLevel, appIcon, '* */10 * * * *');
 });
