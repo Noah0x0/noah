@@ -16,6 +16,7 @@ class App extends Component {
         precipitation: 0,
         trendencyPr: 0,
         trendencyWl: 0,
+        warning: false,
       },
     }
   }

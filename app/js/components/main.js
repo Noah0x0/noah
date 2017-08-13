@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Location from './location';
+import RainImage from './rainimage';
 import Data from './data';
 
 const Main = (props) => {
@@ -12,9 +13,7 @@ const Main = (props) => {
         list={props.list}
         changeLocation={props.changeLocation}
       />
-      <div className="noah-rainimage">
-        <i className="fa fa-umbrella" aria-hidden="true"></i>
-      </div>
+      <RainImage data={props.data} />
       <Data data={props.data} />
     </main>
   );
