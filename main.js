@@ -3,7 +3,7 @@
 const { app, Tray, BrowserWindow, ipcMain } = require('electron');
 const openAboutWindow = require('about-window').default;
 const electronReload = require('electron-reload');
-const lib = require('./lib/');
+const Lib = require('./lib/');
 const constants = require('./constants');
 
 electronReload(__dirname);
@@ -14,6 +14,13 @@ let win = null;
 
 // init
 app.on('ready', () => {
+
+  const lib = new Lib(
+    'japan',
+    'ishikawa',
+    'asano',
+  );
+
   // hide icon on dock
   app.dock.hide();
 
@@ -53,6 +60,12 @@ app.on('ready', () => {
     }
   });
 
+  // Update Location
+  ipcMain.on('updateLocation', (e, current) => {
+    lib.setCurrentLocation(current);
+    win.webContents.send('locationReflect', lib.getLocation());
+  });
+
   // Refresh
   ipcMain.on('refresh', (e, current) => {
     win.webContents.send('dataReflect', lib.getData(current));
@@ -71,5 +84,5 @@ app.on('ready', () => {
   }));
 
   // Run Polling
-  lib.polling(lib.requestWaterLevel, appIcon, '* */10 * * * *');
+  lib.polling(appIcon, '* */10 * * * *');
 });
