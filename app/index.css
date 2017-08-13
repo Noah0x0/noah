@@ -49,8 +49,20 @@ body {
     padding: 15px 0 15px;
 }
 
+.noah-rainimage span {
+    position: relative;
+}
+
 .noah-rainimage .fa-umbrella {
     font-size: 100px;
+}
+
+.noah-rainimage .fa-exclamation-triangle {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    font-size: 32px;
+    color: #de2a2a;
 }
 
 .noah-data {
