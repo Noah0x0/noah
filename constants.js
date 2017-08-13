@@ -10,8 +10,7 @@ module.exports = {
     pushIcon: `${ __dirname }/icon/push-icon.png`,
 
     // API URL
-    waterLevelURL: '',
-    rainFallURL: '',
+    host: '',
 
     // HTML path
     windowURL: `file://${__dirname}/app/index.html`,
