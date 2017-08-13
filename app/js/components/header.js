@@ -4,8 +4,8 @@ import React from 'react';
 import { ipcRenderer } from 'electron';
 import getMenu from '../menu';
 
-const onRefresh = (e, current) => {
-  ipcRenderer.send('refresh', current);
+const onRefresh = () => {
+  ipcRenderer.send('refresh');
 };
 
 const openMenu = () => {
@@ -16,9 +16,7 @@ const openMenu = () => {
 const Header = (props) => {
   return (
     <header className="noah-header">
-      <i className="fa fa-refresh" aria-hidden="true" aria-label="Refresh"
-        onClick={(e) => onRefresh(e, props.current)}
-      ></i>
+      <i className="fa fa-refresh" aria-hidden="true" aria-label="Refresh" onClick={onRefresh}></i>
       <h1>noah</h1>
       <i className="fa fa-cog" aria-hidden="true" aria-label="Options" onClick={openMenu}></i>
     </header>

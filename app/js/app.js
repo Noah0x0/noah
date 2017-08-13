@@ -10,8 +10,8 @@ class App extends Component {
     super();
     this.updateCurrent = this.updateCurrent.bind(this);
     this.state = {
-      current: 0,
-      location: ['---'],
+      current: { country: '---', prefecture: '---', river: '---' },
+      list: [{ country: '---', prefecture: '---', river: '---' }],
       data: {
         precipitation: 0,
         trendencyPr: 0,
@@ -25,13 +25,14 @@ class App extends Component {
     ipcRenderer.on('dataReflect', (ev, data) => {
       this.setState({ data });
     });
-    ipcRenderer.on('locationReflect', (ev, location) => {
-      this.setState({ location });
+    ipcRenderer.on('locationReflect', (ev, { current, list }) => {
+      this.setState({ current, list });
     });
   }
 
   updateCurrent(current) {
-    ipcRenderer.send('refresh', current);
+    ipcRenderer.send('updateLocation', current);
+    ipcRenderer.send('refresh');
     this.setState({ current });
   }
 

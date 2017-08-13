@@ -10,7 +10,7 @@ const Main = (props) => {
     <main className="noah-main">
       <Location
         current={props.current}
-        location={props.location}
+        list={props.list}
         changeLocation={props.changeLocation}
       />
       <RainImage data={props.data} />

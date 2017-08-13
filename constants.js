@@ -9,9 +9,6 @@ module.exports = {
     trayIcon5: `${ __dirname }/icon/tray-icon5.png`,
     pushIcon: `${ __dirname }/icon/push-icon.png`,
 
-    // API URL
-    host: '',
-
     // HTML path
     windowURL: `file://${__dirname}/app/index.html`,
 
