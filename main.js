@@ -6,6 +6,8 @@ const electronReload = require('electron-reload');
 const Lib = require('./lib/');
 const constants = require('./constants');
 
+process.env.GOOGLE_API_KEY = '';
+
 electronReload(__dirname);
 
 // Electron obj

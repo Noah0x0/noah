@@ -36,11 +36,46 @@ class App extends Component {
     this.setState({ current });
   }
 
+  getCurrentPreciseLocation() {
+    if (!("geolocation" in navigator)) {
+      return Promise.reject('geolocation not supported');
+    }
+
+    const options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0
+    };
+
+    return new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(
+        (position) => resolve([position.coords.latitude, position.coords.longitude]),
+        (err) => reject('ERROR(' + err.code + '): ' + err.message),
+        options,
+      );
+    });
+  }
+
+  getMeridianSearchURL(destination) {
+    let meridianSearchURL = '';
+
+    (async function() {
+      try {
+        const current = await this.getCurrentPreciseLocation();
+        meridianSearchURL = `https://www.google.co.jp/maps/dir/${ current.latitude },${ current.longitude }/${encodeURIComponent(destination)}/`;
+      } catch(err) {
+        console.warn(err);
+      }
+    })();
+
+    return meridianSearchURL;
+  }
+
   render() {
     return (
       <div>
         <Header current={this.state.current} />
-        <Main {...this.state} changeLocation={this.updateCurrent} />
+        <Main {...this.state} changeLocation={this.updateCurrent} getMeridianSearchURL={this.getMeridianSearchURL} />
       </div>
     );
   }
