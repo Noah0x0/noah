@@ -9,6 +9,7 @@ class App extends Component {
   constructor() {
     super();
     this.updateCurrent = this.updateCurrent.bind(this);
+    this.getMeridianSearchURL = this.getMeridianSearchURL.bind(this);
     this.state = {
       current: { country: '---', prefecture: '---', river: '---' },
       list: [{ country: '---', prefecture: '---', river: '---' }],
@@ -56,19 +57,13 @@ class App extends Component {
     });
   }
 
-  getMeridianSearchURL(destination) {
-    let meridianSearchURL = '';
-
-    (async function() {
-      try {
-        const current = await this.getCurrentPreciseLocation();
-        meridianSearchURL = `https://www.google.co.jp/maps/dir/${ current.latitude },${ current.longitude }/${encodeURIComponent(destination)}/`;
-      } catch(err) {
-        console.warn(err);
-      }
-    })();
-
-    return meridianSearchURL;
+  async getMeridianSearchURL(destination) {
+    try {
+      const current = await this.getCurrentPreciseLocation();
+      return `https://www.google.co.jp/maps/dir/${ current.latitude },${ current.longitude }/${encodeURIComponent(destination)}/`;
+    } catch(err) {
+      throw err;
+    }
   }
 
   render() {
