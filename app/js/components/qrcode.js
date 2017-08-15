@@ -5,8 +5,8 @@ import React from 'react';
 const QRCode = (props) => {
   return (
     <div className="noah-qrcode">
-      <p>{props.data.src}</p>
-      <img src={props.data.src} alt="QRコード" />
+      <p>{props.qrSrc}</p>
+      <img src={props.qrSrc} alt="QRコード" />
     </div>
   );
 };

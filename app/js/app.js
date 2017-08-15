@@ -17,9 +17,7 @@ class App extends Component {
         trendencyPr: 0,
         trendencyWl: 0,
         warning: false,
-      },
-      qr: {
-        src: ""
+        qrSrc: '',
       }
     }
   }
@@ -30,10 +28,6 @@ class App extends Component {
     });
     ipcRenderer.on('locationReflect', (ev, { current, list }) => {
       this.setState({ current, list });
-    });
-    ipcRenderer.on('qrCodeReflect', (ev, qr) => {
-      console.log({ qr });
-      this.setState({ qr })
     });
   }
 

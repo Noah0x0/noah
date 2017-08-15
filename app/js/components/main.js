@@ -16,7 +16,7 @@ const Main = (props) => {
       />
       <RainImage data={props.data} />
       <Data data={props.data} />
-      <QrCode data={props.qr} />
+      <QrCode qrSrc={props.data.qrSrc} />
     </main>
   );
 };
