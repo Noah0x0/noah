@@ -57,6 +57,7 @@ app.on('ready', () => {
       // View Reflect
       win.webContents.send('dataReflect', lib.getData());
       win.webContents.send('locationReflect', lib.getLocation());
+      win.webContents.send('qrCodeReflect', lib.getQrCode());
     }
   });
 
@@ -85,4 +86,5 @@ app.on('ready', () => {
 
   // Run Polling
   lib.polling(appIcon, '* */10 * * * *');
+  win.openDevTools();
 });
