@@ -66,6 +66,11 @@ app.on('ready', () => {
     win.webContents.send('locationReflect', lib.getLocation());
   });
 
+  // Update Geolocation
+  ipcMain.on('updateGeolocation', (e, geolocation) => {
+    lib.setGeolocation(geolocation);
+  });
+
   // Refresh
   ipcMain.on('refresh', () => {
     win.webContents.send('dataReflect', lib.getData());

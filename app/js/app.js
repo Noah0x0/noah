@@ -9,9 +9,14 @@ class App extends Component {
   constructor() {
     super();
     this.updateCurrent = this.updateCurrent.bind(this);
+    this.updateGeolocation = this.updateGeolocation.bind(this);
     this.state = {
       current: { country: '---', prefecture: '---', river: '---' },
       list: [{ country: '---', prefecture: '---', river: '---' }],
+      geolocation: {
+        latitude: 0,
+        longitude: 0,
+      },
       data: {
         precipitation: 0,
         trendencyPr: 0,
@@ -23,6 +28,7 @@ class App extends Component {
   }
 
   componentWillMount() {
+    this.updateGeolocation();
     ipcRenderer.on('dataReflect', (ev, data) => {
       this.setState({ data });
     });
@@ -37,10 +43,23 @@ class App extends Component {
     this.setState({ current });
   }
 
+  updateGeolocation() {
+    // ここでgeolocationを取得する
+    const geolocation = {
+      latitude: 10,
+      longitude: 10,
+    };
+    ipcRenderer.send('updateGeolocation', geolocation);
+    this.setState({ geolocation });
+  }
+
   render() {
     return (
       <div>
-        <Header current={this.state.current} />
+        <Header
+          current={this.state.current}
+          updateGeolocation={this.updateGeolocation}
+        />
         <Main {...this.state} changeLocation={this.updateCurrent} />
       </div>
     );
