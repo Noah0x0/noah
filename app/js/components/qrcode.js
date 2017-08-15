@@ -2,11 +2,18 @@
 
 import React from 'react';
 
+const getImg = (qrSrc) => {
+  if (qrSrc === '') {
+    return <p>QRコードが表示できません</p>;
+  }
+  return <img src={qrSrc} alt="QRコード" />;
+}
+
 const QRCode = (props) => {
   return (
     <div className="noah-qrcode">
       <p>{props.qrSrc}</p>
-      <img src={props.qrSrc} alt="QRコード" />
+      {getImg(props.qrSrc)}
     </div>
   );
 };
