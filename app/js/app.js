@@ -13,10 +13,6 @@ class App extends Component {
     this.state = {
       current: { country: '---', prefecture: '---', river: '---' },
       list: [{ country: '---', prefecture: '---', river: '---' }],
-      geolocation: {
-        latitude: 0,
-        longitude: 0,
-      },
       data: {
         precipitation: 0,
         trendencyPr: 0,
@@ -61,7 +57,6 @@ class App extends Component {
     try {
       const geolocation = await this.getGeolocation();
       ipcRenderer.send('updateGeolocation', geolocation);
-      this.setState({ geolocation });
     } catch (err) {
       throw err;
     }
@@ -75,8 +70,6 @@ class App extends Component {
           updateGeolocation={this.updateGeolocation}
         />
         <Main {...this.state} changeLocation={this.updateCurrent} />
-        {this.state.geolocation.latitude}<br />
-        {this.state.geolocation.longitude}
       </div>
     );
   }
