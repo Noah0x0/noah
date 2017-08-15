@@ -43,7 +43,7 @@ class App extends Component {
     this.setState({ current });
   }
 
-  async getGeolocation() {
+  getGeolocation() {
     if (!'geolocation' in navigator) return { latitude: 0, longitude: 0 };
 
     return new Promise((resolve, reject) => {
