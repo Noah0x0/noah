@@ -43,14 +43,28 @@ class App extends Component {
     this.setState({ current });
   }
 
-  updateGeolocation() {
-    // ここでgeolocationを取得する
-    const geolocation = {
-      latitude: 10,
-      longitude: 10,
-    };
-    ipcRenderer.send('updateGeolocation', geolocation);
-    this.setState({ geolocation });
+  async getGeolocation() {
+    if (!'geolocation' in navigator) return { latitude: 0, longitude: 0 };
+
+    return new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(
+        (position) => resolve({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+        }),
+        (err) => reject(`ERROR(${err.code}): ${err.message}`)
+      );
+    });
+  }
+
+  async updateGeolocation() {
+    try {
+      const geolocation = await this.getGeolocation();
+      ipcRenderer.send('updateGeolocation', geolocation);
+      this.setState({ geolocation });
+    } catch (err) {
+      throw err;
+    }
   }
 
   render() {
@@ -61,6 +75,8 @@ class App extends Component {
           updateGeolocation={this.updateGeolocation}
         />
         <Main {...this.state} changeLocation={this.updateCurrent} />
+        {this.state.geolocation.latitude}<br />
+        {this.state.geolocation.longitude}
       </div>
     );
   }

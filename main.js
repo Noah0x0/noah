@@ -11,6 +11,7 @@ electronReload(__dirname);
 // Electron obj
 let appIcon = null;
 let win = null;
+process.env.GOOGLE_API_KEY = '';
 
 // init
 app.on('ready', () => {
