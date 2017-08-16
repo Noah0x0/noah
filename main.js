@@ -7,6 +7,8 @@ const notifier = require('node-notifier');
 const Lib = require('./lib/');
 const constants = require('./constants');
 
+process.env.GOOGLE_API_KEY = '';
+
 electronReload(__dirname);
 
 // Electron obj
