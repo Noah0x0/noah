@@ -3,6 +3,7 @@
 const { app, Tray, BrowserWindow, ipcMain } = require('electron');
 const openAboutWindow = require('about-window').default;
 const electronReload = require('electron-reload');
+const notifier = require('node-notifier');
 const Lib = require('./lib/');
 const constants = require('./constants');
 
@@ -53,11 +54,12 @@ app.on('ready', () => {
       win.hide();
     } else {
       win.show();
-
-      // View Reflect
-      win.webContents.send('dataReflect', lib.getData());
-      win.webContents.send('locationReflect', lib.getLocation());
     }
+  });
+
+  win.on('show', () => {
+    win.webContents.send('dataReflect', lib.getData());
+    win.webContents.send('locationReflect', lib.getLocation());
   });
 
   // Update Location
@@ -82,6 +84,9 @@ app.on('ready', () => {
       width: 550,
     }
   }));
+
+  // Click notification to show window
+  notifier.on('click', () => win.show());
 
   // Run Polling
   lib.polling(appIcon, '* */10 * * * *');
