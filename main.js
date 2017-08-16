@@ -12,7 +12,6 @@ electronReload(__dirname);
 // Electron obj
 let appIcon = null;
 let win = null;
-const host = 'xxxxxxxxxxxxxx';
 
 // init
 app.on('ready', () => {
@@ -21,7 +20,7 @@ app.on('ready', () => {
     country: 'japan',
     prefecture: 'ishikawa',
     river: 'asano',
-  }, host, process.env.NODE_ENV);
+  }, process.env.LAMBDA_HOST, process.env.NODE_ENV);
 
   // hide icon on dock
   app.dock.hide();
