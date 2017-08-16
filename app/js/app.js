@@ -40,7 +40,7 @@ class App extends Component {
   }
 
   getGeolocation() {
-    if (!'geolocation' in navigator) return { latitude: 0, longitude: 0 };
+    if (!'geolocation' in navigator) return { latitude: 999, longitude: 999 };
 
     return new Promise((resolve, reject) => {
       navigator.geolocation.getCurrentPosition(
