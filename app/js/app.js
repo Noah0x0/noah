@@ -42,13 +42,20 @@ class App extends Component {
   getGeolocation() {
     if (!'geolocation' in navigator) return { latitude: 999, longitude: 999 };
 
+    const options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0
+    };
+
     return new Promise((resolve, reject) => {
       navigator.geolocation.getCurrentPosition(
         (position) => resolve({
           latitude: position.coords.latitude,
           longitude: position.coords.longitude,
         }),
-        (err) => reject(`ERROR(${err.code}): ${err.message}`)
+        (err) => reject(`ERROR(${err.code}): ${err.message}`),
+        options,
       );
     });
   }
