@@ -4,7 +4,7 @@
   "description": "noah will let you know the water level of the nearest river in the menu bar.",
   "main": "main.js",
   "scripts": {
-    "start": "electron .",
+    "start": "NODE_ENV=production electron .",
     "pack:osx": "build --mac --x64",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
