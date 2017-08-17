@@ -1,5 +1,7 @@
 # noah
 
+<img src="./icon/appIcon_win@1x.png.ico" width="100">
+
 noah will let you know the water level of the nearest river in the menu bar.
 
 ## :droplet: Getting Started
