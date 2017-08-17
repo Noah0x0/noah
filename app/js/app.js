@@ -9,6 +9,7 @@ class App extends Component {
   constructor() {
     super();
     this.updateCurrent = this.updateCurrent.bind(this);
+    this.updateGeolocation = this.updateGeolocation.bind(this);
     this.state = {
       current: { country: '---', prefecture: '---', river: '---' },
       list: [{ country: '---', prefecture: '---', river: '---' }],
@@ -17,11 +18,13 @@ class App extends Component {
         trendencyPr: 0,
         trendencyWl: 0,
         warning: false,
-      },
+        qrSrc: '',
+      }
     }
   }
 
   componentWillMount() {
+    this.updateGeolocation();
     ipcRenderer.on('dataReflect', (ev, data) => {
       this.setState({ data });
     });
@@ -36,10 +39,43 @@ class App extends Component {
     this.setState({ current });
   }
 
+  getGeolocation() {
+    if (!'geolocation' in navigator) return { latitude: 999, longitude: 999 };
+
+    const options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0
+    };
+
+    return new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(
+        (position) => resolve({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+        }),
+        (err) => reject(`ERROR(${err.code}): ${err.message}`),
+        options,
+      );
+    });
+  }
+
+  async updateGeolocation() {
+    try {
+      const geolocation = await this.getGeolocation();
+      ipcRenderer.send('updateGeolocation', geolocation);
+    } catch (err) {
+      throw err;
+    }
+  }
+
   render() {
     return (
       <div>
-        <Header current={this.state.current} />
+        <Header
+          current={this.state.current}
+          updateGeolocation={this.updateGeolocation}
+        />
         <Main {...this.state} changeLocation={this.updateCurrent} />
       </div>
     );

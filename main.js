@@ -12,6 +12,7 @@ electronReload(__dirname);
 // Electron obj
 let appIcon = null;
 let win = null;
+process.env.GOOGLE_API_KEY = '';
 
 // init
 app.on('ready', () => {
@@ -66,6 +67,11 @@ app.on('ready', () => {
   ipcMain.on('updateLocation', (e, current) => {
     lib.setCurrentLocation(current);
     win.webContents.send('locationReflect', lib.getLocation());
+  });
+
+  // Update Geolocation
+  ipcMain.on('updateGeolocation', (e, geolocation) => {
+    lib.setGeolocation(geolocation);
   });
 
   // Refresh
