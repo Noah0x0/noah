@@ -17,11 +17,11 @@ process.env.GOOGLE_API_KEY = '';
 // init
 app.on('ready', () => {
 
-  const lib = new Lib(
-    'japan',
-    'ishikawa',
-    'asano',
-  );
+  const lib = new Lib({
+    country: 'japan',
+    prefecture: 'ishikawa',
+    river: 'asano',
+  }, process.env.LAMBDA_HOST, process.env.NODE_ENV);
 
   // hide icon on dock
   app.dock.hide();
