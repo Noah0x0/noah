@@ -5,7 +5,8 @@
   "main": "main.js",
   "scripts": {
     "start": "NODE_ENV=production LAMBDA_HOST=xxxxxxxxxxxx electron .",
-    "pack:osx": "build --mac --x64",
+    "pack:mac": "build --mac --x64",
+    "pack:win": "build --win --x64",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,6 +23,9 @@
     "appId": "com.electron.noah",
     "mac": {
       "target": "dmg"
+    },
+    "win": {
+      "target": "zip"
     },
     "directories": {
       "output": "docs"
@@ -42,6 +46,7 @@
     "babel-register": "^6.24.1",
     "electron": "^1.7.5",
     "electron-builder": "^19.19.1",
-    "electron-reload": "^1.2.1"
+    "electron-reload": "^1.2.1",
+    "rcedit": "^0.9.0"
   }
 }
