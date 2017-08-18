@@ -4,7 +4,7 @@ import React from 'react';
 import Location from './location';
 import RainImage from './rainimage';
 import Data from './data';
-import QrCode from './qrcode';
+import Shelter from './shelter';
 
 const Main = (props) => {
   return (
@@ -16,7 +16,7 @@ const Main = (props) => {
       />
       <RainImage data={props.data} />
       <Data data={props.data} />
-      <QrCode qrSrc={props.data.qrSrc} />
+      <Shelter data={props.data} />
     </main>
   );
 };

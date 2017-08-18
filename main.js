@@ -37,9 +37,9 @@ app.on('ready', () => {
     resizable: false,
     alwaysOnTop: true,
     width: 430,
-    height: 300,
+    height: 450,
     minWidth: 430,
-    minHeight: 300,
+    minHeight: 450,
     x: trayBounds.x - 400,
     y: trayBounds.y,
   });
