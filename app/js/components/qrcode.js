@@ -12,7 +12,6 @@ const getImg = (qrSrc) => {
 const QRCode = (props) => {
   return (
     <div className="noah-qrcode">
-      <p>{props.qrSrc}</p>
       {getImg(props.qrSrc)}
     </div>
   );

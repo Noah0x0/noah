@@ -14,5 +14,8 @@ module.exports = {
     windowURL: `file://${__dirname}/app/index.html`,
 
     // CSS path
-    aboutCss: `${ __dirname }/app/css/about.css`
+    aboutCss: `${ __dirname }/app/css/about.css`,
+
+    // GOOGLE_API_KEY
+    apikey: '',
 };
