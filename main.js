@@ -9,7 +9,7 @@ const constants = require('./constants');
 // Electron obj
 let appIcon = null;
 let win = null;
-process.env.GOOGLE_API_KEY = '';
+process.env.GOOGLE_API_KEY = constants.apikey;
 
 // init
 app.on('ready', () => {
