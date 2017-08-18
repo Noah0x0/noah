@@ -2,12 +2,9 @@
 
 const { app, Tray, BrowserWindow, ipcMain } = require('electron');
 const openAboutWindow = require('about-window').default;
-const electronReload = require('electron-reload');
 const notifier = require('node-notifier');
 const Lib = require('./lib/');
 const constants = require('./constants');
-
-electronReload(__dirname);
 
 // Electron obj
 let appIcon = null;
@@ -24,7 +21,9 @@ app.on('ready', () => {
   }, process.env.LAMBDA_HOST, process.env.NODE_ENV);
 
   // hide icon on dock
-  app.dock.hide();
+  if (process.platform === 'darwin') {
+    app.dock.hide();
+  }
 
   // Tray
   appIcon = new Tray(constants.trayIcon1);
@@ -41,7 +40,7 @@ app.on('ready', () => {
     height: 300,
     minWidth: 430,
     minHeight: 300,
-    x: trayBounds.x - 80,
+    x: trayBounds.x - 400,
     y: trayBounds.y,
   });
   win.loadURL(constants.windowURL);
