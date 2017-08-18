@@ -113,22 +113,22 @@ body {
     margin-right: 10px;
 }
 
-.noah-data-trendency {
+.noah-data-trend {
     padding-top: 15px;
 }
 
-.noah-data-trendency-inner {
+.noah-data-trend-inner {
     display: flex;
     margin-top: 15px;
 }
 
-.noah-data-trendency-inner h3 {
+.noah-data-trend-inner h3 {
     margin: 0 0 10px;
     font-size: 12px;
     color: #666;
 }
 
-.noah-data-trendency-inner > div {
+.noah-data-trend-inner > div {
     flex-grow: 1;
     text-align: center
 }

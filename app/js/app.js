@@ -15,8 +15,8 @@ class App extends Component {
       list: [{ country: '---', prefecture: '---', river: '---' }],
       data: {
         precipitation: 0,
-        trendencyPr: 0,
-        trendencyWl: 0,
+        trendPr: 0,
+        trendWl: 0,
         warning: false,
         qrSrc: '',
         mapSrc: '',

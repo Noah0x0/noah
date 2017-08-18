@@ -10,16 +10,16 @@ const Data = (props) => {
         <h2>Precipitation</h2>
         <p><span>{props.data.precipitation}</span>mm / 1h</p>
       </div>
-      <div className="noah-data-trendency">
-        <h2>Trendency</h2>
-        <div className="noah-data-trendency-inner">
+      <div className="noah-data-trend">
+        <h2>Trends</h2>
+        <div className="noah-data-trend-inner">
           <div>
             <h3>Precipitation</h3>
-            <ArrowLevel level={props.data.trendencyPr} />
+            <ArrowLevel level={props.data.trendPr} />
           </div>
           <div>
             <h3>Water Level</h3>
-            <ArrowLevel level={props.data.trendencyWl} />
+            <ArrowLevel level={props.data.trendWl} />
           </div>
         </div>
       </div>
