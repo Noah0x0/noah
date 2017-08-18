@@ -82,7 +82,7 @@ app.on('ready', () => {
 
   // About Setting
   ipcMain.on('about', () => openAboutWindow({
-    icon_path: constants.pushIcon,
+    icon_path: constants.aboutIcon,
     description: 'noah will let you know the water level of the nearest river in the menu bar.',
     css_path: constants.aboutCss,
     win_options: {
