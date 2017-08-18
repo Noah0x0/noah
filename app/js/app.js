@@ -19,6 +19,7 @@ class App extends Component {
         trendencyWl: 0,
         warning: false,
         qrSrc: '',
+        mapSrc: '',
       }
     }
   }
