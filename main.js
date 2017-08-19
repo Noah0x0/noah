@@ -94,5 +94,5 @@ app.on('ready', () => {
   notifier.on('click', () => win.show());
 
   // Run Polling
-  lib.polling(appIcon, '*/2 * * * * *');
+  lib.polling(appIcon, '*/3 * * * * *');
 });
