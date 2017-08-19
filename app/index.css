@@ -65,12 +65,13 @@ body {
 
 .noah-rainimage .fa-umbrella {
     font-size: 100px;
+    content: url("../icon/window-rain5@1x.png"); !important;
 }
 
 .noah-rainimage .fa-exclamation-triangle {
     position: absolute;
-    right: 0;
-    bottom: 0;
+    right: -15px;
+    bottom: -10px;
     font-size: 32px;
     color: #de2a2a;
 }
