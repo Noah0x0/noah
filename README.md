@@ -4,7 +4,7 @@
 
 noah will let you know the water level of the nearest river in the menu bar.
 
-<img src="https://goo.gl/kLCK92">
+![demo](https://github.com/Noah0x0/noah/blob/media/demo-20170819/media/demo-20170819.gif)
 
 ## :droplet: Getting Started
 
